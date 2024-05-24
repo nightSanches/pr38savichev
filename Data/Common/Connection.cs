@@ -4,7 +4,7 @@ namespace pr37savichev.Data.Common
 {
     public class Connection
     {
-        readonly static string ConnectionData = "server=127.0.0.1;port=3307;database=Shop;uid=root;pwd=";
+        readonly static string ConnectionData = "server=127.0.0.1;port=3306;database=Shop;uid=root;pwd=";
 
         public static MySqlConnection MySqlOpen()
         {
