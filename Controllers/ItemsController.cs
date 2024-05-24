@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using pr37savichev.Data.Interfaces;
+using pr37savichev.Data.ViewModell;
 
 namespace pr37savichev.Controllers
 {
@@ -7,7 +8,7 @@ namespace pr37savichev.Controllers
     {
         private IItems IAllItems;
         private ICategories IAllCategories;
-
+        VMItems VMItems = new VMItems();
 
         public ItemsController(IItems IAllItems, ICategories IAllCategories)
         {
@@ -15,11 +16,13 @@ namespace pr37savichev.Controllers
             this.IAllCategories = IAllCategories;
         }
 
-        public ViewResult List()
+        public ViewResult List(int id = 0)
         {
             ViewBag.Title = "Страница с предметами";
-            var cars = IAllItems.AllItems;
-            return View(cars);
+            VMItems.Items = IAllItems.AllItems;
+            VMItems.Categories = IAllCategories.AllCategories;
+            VMItems.SelectCategory = id;
+            return View(VMItems);
         }
     }
 }

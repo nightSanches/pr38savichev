@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using pr37savichev.Data.DataBase;
 using pr37savichev.Data.Interfaces;
 using pr37savichev.Data.Mocks;
 using System;
@@ -18,8 +19,8 @@ namespace pr37savichev
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddTransient<ICategories, MockCategories>();
-            services.AddTransient<IItems, MockItems>();
+            services.AddTransient<ICategories, DBCategory>();
+            services.AddTransient<IItems, DBItems>();
             services.AddMvc(option => option.EnableEndpointRouting = false);
         }
 
